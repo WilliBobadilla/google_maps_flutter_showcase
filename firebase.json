@@ -1,0 +1,41 @@
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "maps-showcase-dbf24",
+                    "appId": "1:138412004250:android:4d3eef6193dac0f1b96023",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "ios": {
+                "default": {
+                    "projectId": "maps-showcase-dbf24",
+                    "appId": "1:138412004250:ios:69a121a0d1e4a349b96023",
+                    "uploadDebugSymbols": true,
+                    "fileOutput": "ios/Runner/GoogleService-Info.plist"
+                }
+            },
+            "macos": {
+                "default": {
+                    "projectId": "maps-showcase-dbf24",
+                    "appId": "1:138412004250:ios:69a121a0d1e4a349b96023",
+                    "uploadDebugSymbols": true,
+                    "fileOutput": "macos/Runner/GoogleService-Info.plist"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "maps-showcase-dbf24",
+                    "configurations": {
+                        "android": "1:138412004250:android:4d3eef6193dac0f1b96023",
+                        "ios": "1:138412004250:ios:69a121a0d1e4a349b96023",
+                        "macos": "1:138412004250:ios:69a121a0d1e4a349b96023",
+                        "web": "1:138412004250:web:e4c3a06f1e1a339ab96023",
+                        "windows": "1:138412004250:web:d90ca82b651b5210b96023"
+                    }
+                }
+            }
+        }
+    }
+}

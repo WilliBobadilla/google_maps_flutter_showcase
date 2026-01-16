@@ -1,8 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_maps_showcase/core/routes/routes.dart';
 import 'package:google_maps_showcase/home_page.dart';
+import 'package:google_maps_showcase/core/routes/routes.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:google_maps_showcase/core/firebase_services/firebase_services.dart';
 import 'package:google_maps_showcase/core/injection_container/injection_container.dart'
     as dependency_injection_container;
 import 'package:responsive_framework/responsive_framework.dart';
@@ -10,6 +11,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   dependency_injection_container.init();
+  FirebaseServices.initializeFCM();
   FlutterError.onError = (errorDetails) {
     // FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };

@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import 'package:google_maps_showcase/features/map_example_1/presentation/pages/maps_example_one_page.dart';
+
+class HomeView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+        title: Text("Google Maps Showcase"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Examples here'),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, MapsExampleOnePage.route);
+              },
+              child: const Text(
+                'Example 1, Current Position, Camera control, Marker, etc',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, MapsExampleOnePage.route);
+              },
+              child: const Text(
+                'Example 2, Custom Markers, Polylines, Circles, etc',
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

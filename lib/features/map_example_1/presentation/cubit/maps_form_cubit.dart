@@ -1,6 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_compass_v2/flutter_compass_v2.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/usecases/usecase.dart';
 import 'package:google_maps_showcase/features/map_example_1/domain/usecase/get_current_location_use_case.dart';
@@ -14,42 +15,27 @@ class MapsFormCubit extends Cubit<MapsFormState> {
     : _getCurrentLocationUseCase = getCurrentLocationUseCase,
       super(MapsFormInitial());
 
-  void loadInitialPosition(LatLng? initialPosition) {
-    developer.log('Loading initial position: $initialPosition');
-    if (initialPosition != null) {
-      emit(
-        state.copyWith(
-          selectedPosition: initialPosition,
-          initialCameraPosition: CameraPosition(
-            target: initialPosition,
-            zoom: 14.4746,
-          ),
-          marker: Marker(
-            markerId:
-                state.marker?.markerId ?? const MarkerId('current_location'),
-            position: initialPosition,
-          ),
-        ),
-      );
-      if (state.controller != null) {
-        state.controller!.animateCamera(
-          CameraUpdate.newCameraPosition(
-            CameraPosition(target: initialPosition, zoom: 14.4746),
-          ),
-        );
-      }
-    }
-  }
-
   void onMapCreated(GoogleMapController controller) async {
     // You can store the controller if needed
     developer.log('Map created, fetching current location...');
+
     final currentLocation = await _getCurrentLocationUseCase.call(NoParams());
-    if (state.initialCameraPosition != null) {
+    final initialPosition = currentLocation.fold(
+      (failure) => null,
+      (position) => LatLng(position.latitude, position.longitude),
+    );
+    if (initialPosition != null) {
       controller.animateCamera(
-        CameraUpdate.newCameraPosition(state.initialCameraPosition!),
+        duration: Duration(seconds: 2),
+        CameraUpdate.newCameraPosition(
+          CameraPosition(target: initialPosition, zoom: 15),
+        ),
       );
+
+      FlutterCompass.events?.listen(_centerViewInNavigation);
     }
+
+    print("Current location result: $currentLocation");
     currentLocation.fold(
       (failure) => emit(state.copyWith(errorMessage: failure.message)),
       (position) => emit(
@@ -59,6 +45,12 @@ class MapsFormCubit extends Cubit<MapsFormState> {
           marker: Marker(
             markerId: const MarkerId('current_location'),
             position: LatLng(position.latitude, position.longitude),
+            infoWindow: InfoWindow(title: 'Current location'),
+            onTap: () {
+              print(
+                "Marker tapped at ${position.latitude}, ${position.longitude}",
+              );
+            },
           ),
         ),
       ),
@@ -77,5 +69,21 @@ class MapsFormCubit extends Cubit<MapsFormState> {
               ),
       ),
     );
+  }
+
+  void _centerViewInNavigation(CompassEvent rotationEvent) {
+    developer.log('Compass event: $rotationEvent');
+    if (rotationEvent.heading! - (state.lastRotation ?? 0) > 5) {
+      state.copyWith(lastRotation: rotationEvent.heading);
+      state.controller!.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            bearing: rotationEvent.heading ?? 0,
+            target: state.selectedPosition ?? LatLng(0, 0),
+            zoom: 15,
+          ),
+        ),
+      );
+    }
   }
 }

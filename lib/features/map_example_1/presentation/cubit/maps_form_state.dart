@@ -6,6 +6,7 @@ class MapsFormState extends Equatable {
   final String? errorMessage;
   final GoogleMapController? controller;
   final CameraPosition? initialCameraPosition;
+  final double? lastRotation;
 
   const MapsFormState({
     this.selectedPosition,
@@ -13,6 +14,7 @@ class MapsFormState extends Equatable {
     this.marker,
     this.controller,
     this.initialCameraPosition,
+    this.lastRotation,
   });
 
   MapsFormState copyWith({
@@ -21,6 +23,7 @@ class MapsFormState extends Equatable {
     Marker? marker,
     GoogleMapController? controller,
     CameraPosition? initialCameraPosition,
+    double? lastRotation,
   }) {
     return MapsFormState(
       selectedPosition: selectedPosition ?? this.selectedPosition,
@@ -29,6 +32,7 @@ class MapsFormState extends Equatable {
       controller: controller ?? this.controller,
       initialCameraPosition:
           initialCameraPosition ?? this.initialCameraPosition,
+      lastRotation: lastRotation ?? this.lastRotation,
     );
   }
 
@@ -39,6 +43,7 @@ class MapsFormState extends Equatable {
     marker!,
     controller!,
     initialCameraPosition!,
+    lastRotation!,
   ];
 }
 
