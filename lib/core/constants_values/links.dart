@@ -1,3 +1,3 @@
 class Links {
-  static const String servilogWorkshopsWelcome = 'https://www.servilog.com.py';
+  static const String linkForWebPage = 'https://google.com';
 }
