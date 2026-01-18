@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_showcase/core/constants_values/constants.dart';
 import 'package:google_maps_showcase/core/constants_values/sizes.dart';
 import 'package:google_maps_showcase/features/map_example_1/presentation/cubit/maps_form_cubit.dart';
 
@@ -20,11 +21,6 @@ class MapsFormWidget extends StatefulWidget {
 }
 
 class MapsFormWidgetState extends State<MapsFormWidget> {
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(-25.42796133580664, -57.085749655962),
-    zoom: 14.4746,
-  );
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MapsFormCubit, MapsFormState>(
@@ -38,8 +34,7 @@ class MapsFormWidgetState extends State<MapsFormWidget> {
             height: MediaQuery.of(context).size.height * 0.4,
             child: GoogleMap(
               mapToolbarEnabled: true,
-              initialCameraPosition:
-                  state.initialCameraPosition ?? _kGooglePlex,
+              initialCameraPosition: state.initialCameraPosition ?? kGooglePlex,
               //fortyFiveDegreeImageryEnabled: true,
               mapType: MapType.normal,
               markers: state.marker != null ? {state.marker!} : {},

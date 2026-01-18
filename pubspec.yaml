@@ -29,12 +29,19 @@ dependencies:
   responsive_framework: ^1.1.1
   permission_handler: ^12.0.1
   flutter_compass_v2: ^1.0.3
+  webview_flutter: ^4.13.1
+  #flutter_google_street_view: ^3.1.4
+  flutter_google_street_view:
+    git:
+      url: https://github.com/jslattery26packages/flutter_street_view.git
+      path: flutter_google_street_view
+      ref: master 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^5.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_showcase/features/map_example_1/presentation/pages/maps_example_one_page.dart';
+import 'package:google_maps_showcase/features/map_example_2/presentation/pages/maps_example_2_page.dart';
+import 'package:google_maps_showcase/features/street_view/presentation/pages/guess_the_location_page.dart';
+import 'package:google_maps_showcase/features/street_view/presentation/pages/street_view_page.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -8,8 +11,27 @@ class AppRouter {
     switch (settings.name) {
       case MapsExampleOnePage.route:
         return _fadePageRouteBuilder(
-          child: MapsExampleOnePage(),
+          child: const MapsExampleOnePage(),
           name: MapsExampleOnePage.route,
+        );
+
+      case MapsExample2Page.route:
+        return _fadePageRouteBuilder(
+          child: const MapsExample2Page(),
+          name: MapsExample2Page.route,
+        );
+      case StreetViewPage.route:
+        return _fadePageRouteBuilder(
+          child: const StreetViewPage(),
+          name: StreetViewPage.route,
+        );
+
+      case GuessTheLocationPage.route:
+        final args = settings.arguments as GuessTheLocationPageParams;
+
+        return _fadePageRouteBuilder(
+          child: GuessTheLocationPage(params: args),
+          name: GuessTheLocationPage.route,
         );
     }
 

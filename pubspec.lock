@@ -262,14 +262,23 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  flutter_google_street_view:
+    dependency: "direct main"
+    description:
+      path: flutter_google_street_view
+      ref: master
+      resolved-ref: "15d381fa86005b594b8110624d19163eaaad8c95"
+      url: "https://github.com/jslattery26packages/flutter_street_view.git"
+    source: git
+    version: "3.1.6"
   flutter_lints:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: "5398f14efa795ffb7a33e9b6a08798b26a180edac4ad7db3f231e40f82ce11e1"
+      sha256: "3f41d009ba7172d5ff9be5f6e6e6abb4300e263aab8866d2a0842ed2a70f8f0c"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "4.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -456,6 +465,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  kotlin_scope_function:
+    dependency: transitive
+    description:
+      name: kotlin_scope_function
+      sha256: "73d53ae58e36ee44ae538411766091e8c2fb36054dc048c70d95cbf3aab3d85c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   leak_tracker:
     dependency: transitive
     description:
@@ -484,10 +501,10 @@ packages:
     dependency: transitive
     description:
       name: lints
-      sha256: c35bb79562d980e9a453fc715854e1ed39e24e7d0297a880ef54e17f9874a9d7
+      sha256: "976c774dd944a42e83e2467f4cc670daef7eed6295b10b36ae8c85bcbf828235"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.1"
+    version: "4.0.0"
   matcher:
     dependency: transitive
     description:
@@ -669,6 +686,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  street_view_platform_interface:
+    dependency: transitive
+    description:
+      path: street_view_platform_interface
+      ref: "15d381fa86005b594b8110624d19163eaaad8c95"
+      resolved-ref: "15d381fa86005b594b8110624d19163eaaad8c95"
+      url: "https://github.com/jslattery26packages/flutter_street_view.git"
+    source: git
+    version: "1.1.0"
   string_scanner:
     dependency: transitive
     description:
@@ -733,6 +759,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  webview_flutter:
+    dependency: "direct main"
+    description:
+      name: webview_flutter
+      sha256: a3da219916aba44947d3a5478b1927876a09781174b5a2b67fa5be0555154bf9
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.13.1"
+  webview_flutter_android:
+    dependency: transitive
+    description:
+      name: webview_flutter_android
+      sha256: eeeb3fcd5f0ff9f8446c9f4bbc18a99b809e40297528a3395597d03aafb9f510
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.10.11"
+  webview_flutter_platform_interface:
+    dependency: transitive
+    description:
+      name: webview_flutter_platform_interface
+      sha256: "63d26ee3aca7256a83ccb576a50272edd7cfc80573a4305caa98985feb493ee0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.14.0"
+  webview_flutter_wkwebview:
+    dependency: transitive
+    description:
+      name: webview_flutter_wkwebview
+      sha256: e49f378ed066efb13fc36186bbe0bd2425630d4ea0dbc71a18fdd0e4d8ed8ebc
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.23.5"
   win32:
     dependency: transitive
     description:

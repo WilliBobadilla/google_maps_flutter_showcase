@@ -31,8 +31,6 @@ class MapsFormCubit extends Cubit<MapsFormState> {
           CameraPosition(target: initialPosition, zoom: 15),
         ),
       );
-
-      FlutterCompass.events?.listen(_centerViewInNavigation);
     }
 
     print("Current location result: $currentLocation");
@@ -71,19 +69,20 @@ class MapsFormCubit extends Cubit<MapsFormState> {
     );
   }
 
-  void _centerViewInNavigation(CompassEvent rotationEvent) {
-    developer.log('Compass event: $rotationEvent');
-    if (rotationEvent.heading! - (state.lastRotation ?? 0) > 5) {
-      state.copyWith(lastRotation: rotationEvent.heading);
-      state.controller!.animateCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(
-            bearing: rotationEvent.heading ?? 0,
-            target: state.selectedPosition ?? LatLng(0, 0),
-            zoom: 15,
-          ),
+  void onReCenterPosition() async {
+    final rotationEvent = await FlutterCompass.events?.first;
+    developer.log("last Rotation event: ${state.lastRotation}");
+    developer.log("current Rotation event: ${rotationEvent?.heading}");
+    final currentRotation = rotationEvent?.heading ?? 0;
+    state.controller!.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          bearing: currentRotation,
+          target: state.selectedPosition ?? LatLng(0, 0),
+          zoom: 15,
         ),
-      );
-    }
+      ),
+    );
+    emit(state.copyWith(lastRotation: currentRotation)); // TODO: check this
   }
 }

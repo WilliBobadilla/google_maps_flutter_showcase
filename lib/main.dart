@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_showcase/home_page.dart';
 import 'package:google_maps_showcase/core/routes/routes.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_maps_showcase/core/firebase_services/firebase_services.dart';
 import 'package:google_maps_showcase/core/injection_container/injection_container.dart'
     as dependency_injection_container;
-import 'package:responsive_framework/responsive_framework.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         return MediaQuery(
           data: MediaQuery.of(
             context,
-          ).copyWith(textScaler: TextScaler.linear(1.1)),
+          ).copyWith(textScaler: const TextScaler.linear(1.1)),
           child: ResponsiveBreakpoints.builder(
             child: child!,
             breakpoints: [
@@ -54,3 +54,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//Lat: -25.327297554575413, Lng: -57.5471233296409
