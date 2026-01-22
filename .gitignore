@@ -1,6 +1,8 @@
 #custom 
 local.properties
 
+.env
+
 # Miscellaneous
 *.class
 *.log

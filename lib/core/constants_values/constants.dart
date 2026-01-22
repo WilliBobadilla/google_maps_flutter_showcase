@@ -1,7 +1,9 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-const CameraPosition kGooglePlex = CameraPosition(
-  target: LatLng(-25.3273547, -57.4470296),
+LatLng kInitialPosition = const LatLng(-25.3273547, -57.5470296);
+
+final CameraPosition kGooglePlex = CameraPosition(
+  target: LatLng(kInitialPosition.latitude, kInitialPosition.longitude),
   zoom: 14.4746,
 );
 

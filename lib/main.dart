@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_showcase/home_page.dart';
 import 'package:google_maps_showcase/core/routes/routes.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   dependency_injection_container.init();
   FirebaseServices.initializeFCM();
+  await dotenv.load(fileName: '.env'); // we can put this in a helper or util
   FlutterError.onError = (errorDetails) {
     // FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };

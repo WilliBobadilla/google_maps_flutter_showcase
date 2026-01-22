@@ -26,7 +26,7 @@ package="com.bobadillaind.google_maps_showcase">
         android:icon="@mipmap/ic_launcher">
         
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyAe33cLMFdyn_5EgddBCRQIPYci_4SI0b4"/>
+               android:value="AIzaSyC_qGo6vWhjwOuxnOw3LX-0Jxelw3Fynm4"/>
 
         <activity
             android:name=".MainActivity"
