@@ -6,8 +6,9 @@ class GuessTheLocationFormState extends Equatable {
   final GoogleMapController? controller;
   final CameraPosition? initialCameraPosition;
   final Marker? currentLocationmarker;
-
   final Failure? failure;
+  final double? distanceInMeters;
+  final bool? isCorrect;
 
   const GuessTheLocationFormState({
     this.targetPosition,
@@ -16,6 +17,8 @@ class GuessTheLocationFormState extends Equatable {
     this.controller,
     this.initialCameraPosition,
     this.currentLocationmarker,
+    this.distanceInMeters,
+    this.isCorrect,
   });
 
   GuessTheLocationFormState copyWith({
@@ -25,6 +28,8 @@ class GuessTheLocationFormState extends Equatable {
     GoogleMapController? controller,
     CameraPosition? initialCameraPosition,
     Marker? currentLocationmarker,
+    double? distanceInMeters,
+    bool? isCorrect,
   }) {
     return GuessTheLocationFormState(
       targetPosition: targetPosition ?? this.targetPosition,
@@ -35,6 +40,8 @@ class GuessTheLocationFormState extends Equatable {
           initialCameraPosition ?? this.initialCameraPosition,
       currentLocationmarker:
           currentLocationmarker ?? this.currentLocationmarker,
+      distanceInMeters: distanceInMeters ?? this.distanceInMeters,
+      isCorrect: isCorrect ?? this.isCorrect,
     );
   }
 
@@ -46,6 +53,8 @@ class GuessTheLocationFormState extends Equatable {
     controller,
     initialCameraPosition,
     currentLocationmarker,
+    distanceInMeters,
+    isCorrect,
   ];
 }
 

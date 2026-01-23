@@ -1,3 +1,6 @@
+import 'dart:developer' as developer;
+import 'dart:math';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -17,20 +20,20 @@ class StreetViewRepositoryImpl implements StreetViewRepository {
     try {
       final apikey = dotenv.env['GOOGLE_API_REST_KEY'] ?? '';
       const radius = 50000; // in meters
-      final randomLocation = RandomLocationGenerator.randomLatLng();
-      final result = await remoteSource.getStreetViewRandomPlace(
-        location: randomLocation,
-        apiKey: apikey, // maybe we can move it to the client
-        radius: radius,
-        tryCount: 4,
-      );
-
-      final checkResult = await remoteSource.checkIfStreetViewAvailable(
-        location: result as LatLng,
-        apiKey: apikey,
-      );
-      if (checkResult) return right(result);
-      return right(kInitialPosition);
+      const tryCount = 3;
+      final random = Random();
+      for (int attempt = 0; attempt < tryCount; attempt++) {
+        final city = cityBoxes[random.nextInt(cityBoxes.length)];
+        final randomLocation = RandomLocationGenerator.randomPointInCity(city);
+        final result = await remoteSource.getStreetViewRandomPlace(
+          randomLocation: randomLocation,
+          apiKey: apikey, // maybe we can move it to the client
+          radius: radius,
+        );
+        developer.log("Street view attempt ${attempt + 1}: $result");
+        return right(result!);
+      }
+      return left(const ServerFailure(message: "No street view available"));
     } catch (e) {
       return Left(ServerFailure(message: e.toString()));
     }

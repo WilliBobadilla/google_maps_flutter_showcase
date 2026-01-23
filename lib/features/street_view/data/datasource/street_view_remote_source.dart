@@ -1,14 +1,13 @@
 import 'dart:math';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/http_client/external_client.dart';
+import 'package:google_maps_showcase/core/utils/random_location_generator_util.dart';
 
 abstract class StreetViewRemoteSource {
   Future<LatLng?> getStreetViewRandomPlace({
-    required LatLng location,
+    required LatLng randomLocation,
     required String apiKey,
     required int radius,
-    int tryCount = 3,
   });
 
   Future<bool> checkIfStreetViewAvailable({
@@ -24,25 +23,22 @@ class StreetViewRemoteSourceImpl implements StreetViewRemoteSource {
 
   @override
   Future<LatLng?> getStreetViewRandomPlace({
-    required LatLng location,
+    required LatLng randomLocation,
     required String apiKey,
     required int radius,
-    int tryCount = 3,
   }) async {
     final url =
-        '/place/nearbysearch/json'
-        '?location=${location.latitude},${location.longitude}'
-        '&radius=5000'
-        '&type=tourist_attraction'
+        '/streetview/metadata'
+        '?location=${randomLocation.latitude},${randomLocation.longitude}'
+        '&radius=50000'
         '&key=$apiKey';
 
     final data = await client.get(url);
 
-    if (data['status'] == 'OK' && data['results'].isNotEmpty) {
-      final place = data['results'][Random().nextInt(data['results'].length)];
-      final loc = place['geometry']['location'];
-      return LatLng(loc['lat'], loc['lng']);
+    if (data['status'] == 'OK' && data.containsKey('location')) {
+      return LatLng(data['location']['lat'], data['location']['lng']);
     }
+
     return null;
   }
 
@@ -50,14 +46,13 @@ class StreetViewRemoteSourceImpl implements StreetViewRemoteSource {
   Future<bool> checkIfStreetViewAvailable({
     required LatLng location,
     required String apiKey,
+    int tryCount = 3,
   }) async {
     final url =
         '/api/streetview/metadata'
         '?location=${location.latitude},${location.longitude}'
         '&key=$apiKey';
-
     final data = await client.get(url);
-
     return data['status'] == 'OK';
   }
 }

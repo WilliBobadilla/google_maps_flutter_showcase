@@ -64,6 +64,11 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
     emit(state.copyWith(targetPosition: position));
   }
 
+  void onClearAll() {
+    developer.log("clearing all guessed data...");
+    emit(state.copyWith(distanceInMeters: null, isCorrect: null));
+  }
+
   void onCheckGuessedPosition() {
     //this can be in a utils file and then use it in the data layer
     developer.log("checking guessed position...");
@@ -78,6 +83,13 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
     developer.log(
       'Distance between target and guessed: $distanceInMeters meters',
     );
+    if (distanceInMeters <= 300) {
+      // this can be setup in another config file
+      emit(state.copyWith(distanceInMeters: distanceInMeters, isCorrect: true));
+      return;
+    }
+    emit(state.copyWith(distanceInMeters: distanceInMeters, isCorrect: false));
+
     //emit(state.copyWith(guessedPosition: position));
   }
 }

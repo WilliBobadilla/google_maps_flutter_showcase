@@ -3,6 +3,7 @@ import 'dart:developer' as developer;
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:google_maps_showcase/core/constants_values/constants.dart';
 import 'package:google_maps_showcase/core/errors/failures.dart';
 import 'package:google_maps_showcase/core/usecases/usecase.dart';
 import 'package:google_maps_showcase/features/street_view/domain/usecase/get_random_place_use_case.dart';
@@ -25,9 +26,17 @@ class StreetViewFormCubit extends Cubit<StreetViewFormState> {
   void onGetRandomLocation() async {
     final result = await _getRandomPlaceForStreetViewUseCase.call(NoParams());
     developer.log("random location result: $result");
-    result.fold(
-      (failure) => emit(state.copyWith(failure: failure)),
-      (place) => emit(state.copyWith(location: place)),
-    );
+
+    result.fold((failure) => emit(state.copyWith(failure: failure)), (place) {
+      String streetViewHtmlFormatted = streetViewHtml
+          .replaceAll('{latitude}', place!.latitude.toString())
+          .replaceAll('{longitude}', place.longitude.toString());
+      emit(
+        state.copyWith(
+          location: place,
+          htmlForStreetView: streetViewHtmlFormatted,
+        ),
+      );
+    });
   }
 }

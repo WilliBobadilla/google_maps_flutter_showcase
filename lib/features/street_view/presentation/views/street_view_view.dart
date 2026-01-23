@@ -21,29 +21,34 @@ class StreetViewView extends StatelessWidget {
                 'StreetViewChannel',
                 onMessageReceived: (message) {
                   final data = jsonDecode(message.message);
-
                   final lat = data['lat'];
                   final lng = data['lng'];
-                  context.read<StreetViewFormCubit>().onLocationChanged(
-                    LatLng(lat, lng),
-                  );
+                  //context.read<StreetViewFormCubit>().onLocationChanged(
+                  //  LatLng(lat, lng),
+                  //);
                   print('Street View Position changed: Lat: $lat, Lng: $lng');
                 },
               )
-              ..loadHtmlString(streetViewHtml),
+              ..loadHtmlString(
+                context.watch<StreetViewFormCubit>().state.htmlForStreetView ??
+                    streetViewHtml,
+              ),
           ),
           Positioned(
             bottom: 20,
             left: 10,
-            child: IconButton(
-              color: Colors.blue,
+            child: TextButton(
+              child: Text(
+                'Guess the Location',
+                style: TextStyle(color: Colors.blue),
+              ),
               onPressed: () {
                 // this has to be a constant actually
                 final location = context
                     .read<StreetViewFormCubit>()
                     .state
                     .location;
-                print("Current Street View Location: $location");
+                print("ubicacion de street view: $location");
                 if (location == null) return;
                 Navigator.pushNamed(
                   context,
@@ -55,7 +60,6 @@ class StreetViewView extends StatelessWidget {
                 //go to guess the position
                 // send the current location and match it with the street view position
               },
-              icon: Icon(Icons.my_location),
             ),
           ),
           /* FlutterGoogleStreetView(
