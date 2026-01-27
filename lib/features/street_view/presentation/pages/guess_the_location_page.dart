@@ -1,10 +1,9 @@
 import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_showcase/core/ui/dialog.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/injection_container/injection_container.dart';
-import 'package:google_maps_showcase/core/ui/dialog.dart';
 import 'package:google_maps_showcase/features/street_view/presentation/views/guess_the_location_view.dart';
 import 'package:google_maps_showcase/features/street_view/presentation/cubit/guess_the_location_form_cubit.dart';
 
@@ -35,7 +34,7 @@ class GuessTheLocationPage extends StatelessWidget {
                   SnackBar(content: Text(state.failure!.message!)),
                 );
               }
-              if (state.isCorrect!) {
+              if (state.isCorrect == GuessLocationStatusEnum.correct) {
                 showSuccessPopup(
                   context,
                   '¡Correcto!',
@@ -46,7 +45,7 @@ class GuessTheLocationPage extends StatelessWidget {
                   },
                 );
               }
-              if (!state.isCorrect!) {
+              if (state.isCorrect == GuessLocationStatusEnum.incorrect) {
                 showSuccessPopup(
                   context,
                   'Intentelo de nuevo!',

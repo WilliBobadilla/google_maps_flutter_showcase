@@ -32,6 +32,7 @@ dependencies:
   webview_flutter: ^4.13.1
   http: ^1.6.0
   flutter_dotenv: ^6.0.0
+  widget_to_marker: ^1.0.6
   #flutter_google_street_view: ^3.1.4
   flutter_google_street_view:
     git:
@@ -58,6 +59,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/icons/
     - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see

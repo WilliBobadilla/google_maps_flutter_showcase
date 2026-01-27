@@ -1,5 +1,4 @@
 import 'dart:developer' as developer;
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
@@ -54,7 +53,7 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
             initialPosition!.latitude,
             initialPosition.longitude,
           ),
-          infoWindow: InfoWindow(title: 'Current location'),
+          infoWindow: const InfoWindow(title: 'Current location'),
         ),
       ),
     );
@@ -66,7 +65,12 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
 
   void onClearAll() {
     developer.log("clearing all guessed data...");
-    emit(state.copyWith(distanceInMeters: null, isCorrect: null));
+    emit(
+      state.copyWith(
+        distanceInMeters: null,
+        isCorrect: GuessLocationStatusEnum.initial,
+      ),
+    );
   }
 
   void onCheckGuessedPosition() {
@@ -85,11 +89,19 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
     );
     if (distanceInMeters <= 300) {
       // this can be setup in another config file
-      emit(state.copyWith(distanceInMeters: distanceInMeters, isCorrect: true));
+      emit(
+        state.copyWith(
+          distanceInMeters: distanceInMeters,
+          isCorrect: GuessLocationStatusEnum.correct,
+        ),
+      );
       return;
     }
-    emit(state.copyWith(distanceInMeters: distanceInMeters, isCorrect: false));
-
-    //emit(state.copyWith(guessedPosition: position));
+    emit(
+      state.copyWith(
+        distanceInMeters: distanceInMeters,
+        isCorrect: GuessLocationStatusEnum.incorrect,
+      ),
+    );
   }
 }

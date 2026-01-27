@@ -1,7 +1,5 @@
-import 'dart:math';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/http_client/external_client.dart';
-import 'package:google_maps_showcase/core/utils/random_location_generator_util.dart';
 
 abstract class StreetViewRemoteSource {
   Future<LatLng?> getStreetViewRandomPlace({
@@ -27,6 +25,7 @@ class StreetViewRemoteSourceImpl implements StreetViewRemoteSource {
     required String apiKey,
     required int radius,
   }) async {
+    // you can put it to a class like EndPoint list
     final url =
         '/streetview/metadata'
         '?location=${randomLocation.latitude},${randomLocation.longitude}'

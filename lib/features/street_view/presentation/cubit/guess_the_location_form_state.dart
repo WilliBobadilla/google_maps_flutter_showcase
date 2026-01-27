@@ -1,5 +1,7 @@
 part of 'guess_the_location_form_cubit.dart';
 
+enum GuessLocationStatusEnum { initial, correct, incorrect }
+
 class GuessTheLocationFormState extends Equatable {
   final LatLng? targetPosition;
   final LatLng? guessedPosition;
@@ -8,7 +10,7 @@ class GuessTheLocationFormState extends Equatable {
   final Marker? currentLocationmarker;
   final Failure? failure;
   final double? distanceInMeters;
-  final bool? isCorrect;
+  final GuessLocationStatusEnum isCorrect;
 
   const GuessTheLocationFormState({
     this.targetPosition,
@@ -18,7 +20,7 @@ class GuessTheLocationFormState extends Equatable {
     this.initialCameraPosition,
     this.currentLocationmarker,
     this.distanceInMeters,
-    this.isCorrect,
+    this.isCorrect = GuessLocationStatusEnum.initial,
   });
 
   GuessTheLocationFormState copyWith({
@@ -29,7 +31,7 @@ class GuessTheLocationFormState extends Equatable {
     CameraPosition? initialCameraPosition,
     Marker? currentLocationmarker,
     double? distanceInMeters,
-    bool? isCorrect,
+    GuessLocationStatusEnum? isCorrect,
   }) {
     return GuessTheLocationFormState(
       targetPosition: targetPosition ?? this.targetPosition,

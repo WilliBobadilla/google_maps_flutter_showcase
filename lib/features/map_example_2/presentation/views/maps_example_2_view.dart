@@ -35,6 +35,12 @@ class MapsExample2View extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.directions),
+        onPressed: () {
+          context.read<Maps2FormCubit>().onRequestDirections();
+        },
+      ),
     );
   }
 }

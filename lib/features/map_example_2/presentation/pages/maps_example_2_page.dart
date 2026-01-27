@@ -1,5 +1,4 @@
 import 'dart:developer' as developer;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +16,10 @@ class MapsExample2Page extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => Maps2FormCubit(getCurrentLocationUseCase: sl()),
+          create: (context) => Maps2FormCubit(
+            getCurrentLocationUseCase: sl(),
+            getDirectionsUseCase: sl(),
+          ),
         ),
       ],
       child: MultiBlocListener(

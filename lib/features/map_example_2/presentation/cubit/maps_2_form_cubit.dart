@@ -1,20 +1,29 @@
 import 'dart:developer' as developer;
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
+import 'package:equatable/equatable.dart';
+import 'package:widget_to_marker/widget_to_marker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/usecases/usecase.dart';
 import 'package:google_maps_showcase/core/utils/custom_icon_maps_utils.dart';
+import 'package:google_maps_showcase/features/map_example_2/domain/usecase/get_directions_use_case.dart';
+import 'package:google_maps_showcase/features/map_example_2/presentation/widget/map_marker_dash_widget.dart';
+import 'package:google_maps_showcase/features/map_example_2/domain/entities/directions_request_entity.dart';
 import 'package:google_maps_showcase/features/map_example_1/domain/usecase/get_current_location_use_case.dart';
 
 part 'maps_2_form_state.dart';
 
 class Maps2FormCubit extends Cubit<Maps2FormState> {
   final GetCurrentLocationUseCase _getCurrentLocationUseCase;
+  final GetDirectionsUseCase _getDirectionsUseCase;
 
-  Maps2FormCubit({required GetCurrentLocationUseCase getCurrentLocationUseCase})
-    : _getCurrentLocationUseCase = getCurrentLocationUseCase,
-      super(Maps2FormInitial());
+  Maps2FormCubit({
+    required GetCurrentLocationUseCase getCurrentLocationUseCase,
+    required GetDirectionsUseCase getDirectionsUseCase,
+  }) : _getCurrentLocationUseCase = getCurrentLocationUseCase,
+       _getDirectionsUseCase = getDirectionsUseCase,
+       super(Maps2FormInitial());
 
   void onMapCreated(GoogleMapController controller) async {
     // You can store the controller if needed
@@ -54,17 +63,40 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
             initialPosition!.latitude + 0.1,
             initialPosition.longitude + 0.1,
           ),
-          infoWindow: InfoWindow(title: 'Destination location'),
+          infoWindow: const InfoWindow(title: 'Destination location'),
         ),
         curentLocationMarker: Marker(
+          icon: await const MapMarkerDashWidget(text: "Your location")
+              .toBitmapDescriptor(
+                logicalSize: const Size(150, 150),
+                imageSize: const Size(150, 150),
+              ),
           markerId: const MarkerId('current_location'),
           position: LatLng(
             initialPosition!.latitude,
             initialPosition.longitude,
           ),
-          infoWindow: InfoWindow(title: 'Current location'),
+          infoWindow: const InfoWindow(title: 'Current location'),
         ),
       ),
+    );
+  }
+
+  void onRequestDirections() async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    final result = await _getDirectionsUseCase.call(
+      DirectionsRequestEntity(
+        origin: state.currentLocationmarker!.position,
+        destination: state.destinationLocationmarker!.position,
+      ),
+    );
+    result.fold(
+      (failure) {
+        emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      },
+      (success) {
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
+      },
     );
   }
 }
