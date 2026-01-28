@@ -28,7 +28,7 @@ class ExternalClient {
   ]) async {
     String url = Links.kBaseUrl + path;
     Map<String, String> headers = {};
-    developer.log('URL: $url', name: 'google');
+    //developer.log('URL: $url', name: 'google');
     if (additionalHeaders != null) {
       headers.addAll(additionalHeaders);
     }
@@ -47,7 +47,7 @@ class ExternalClient {
 
   dynamic _parseResponse(http.Response response, String? endpoint) {
     _log('Response', 'Status Code: ${response.statusCode}');
-    _log('Response', 'Body: ${response.body}');
+    //_log('Response', 'Body: ${response.body}');
 
     switch (response.statusCode) {
       case 200:

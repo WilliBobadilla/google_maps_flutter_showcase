@@ -20,6 +20,7 @@ class MapsExample2View extends StatelessWidget {
                 initialCameraPosition:
                     state.initialCameraPosition ?? kGooglePlex,
                 //fortyFiveDegreeImageryEnabled: true,
+                polylines: state.polyline != null ? {state.polyline!} : {},
                 mapType: MapType.normal,
                 markers: state.currentLocationmarker != null
                     ? {

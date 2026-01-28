@@ -10,6 +10,8 @@ class Maps2FormState extends Equatable {
   final CameraPosition? initialCameraPosition;
   final double? lastRotation;
   final FormzSubmissionStatus status;
+  final DirectionsResponseEntity? directions;
+  final Polyline? polyline;
 
   const Maps2FormState({
     this.selectedPosition,
@@ -21,6 +23,8 @@ class Maps2FormState extends Equatable {
     this.initialCameraPosition,
     this.lastRotation,
     this.status = FormzSubmissionStatus.initial,
+    this.directions,
+    this.polyline,
   });
 
   Maps2FormState copyWith({
@@ -33,6 +37,8 @@ class Maps2FormState extends Equatable {
     CameraPosition? initialCameraPosition,
     double? lastRotation,
     FormzSubmissionStatus? status,
+    DirectionsResponseEntity? directions,
+    Polyline? polyline,
   }) {
     return Maps2FormState(
       selectedPosition: selectedPosition ?? this.selectedPosition,
@@ -47,6 +53,8 @@ class Maps2FormState extends Equatable {
           initialCameraPosition ?? this.initialCameraPosition,
       lastRotation: lastRotation ?? this.lastRotation,
       status: status ?? this.status,
+      directions: directions ?? this.directions,
+      polyline: polyline ?? this.polyline,
     );
   }
 
@@ -61,6 +69,8 @@ class Maps2FormState extends Equatable {
     initialCameraPosition,
     lastRotation,
     status,
+    directions,
+    polyline,
   ];
 }
 

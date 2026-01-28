@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:fpdart/fpdart.dart';
 import 'package:google_maps_flutter_platform_interface/src/types/location.dart';
 import 'package:google_maps_showcase/core/errors/failures.dart';
@@ -20,8 +22,9 @@ class MapExample2RepositoryImpl implements MapExample2Repository {
       final result = await remoteSource.getDirections(
         DirectionsRequestModel.fromEntity(request),
       );
-      return right(DirectionsResponseEntity());
+      return right(result);
     } catch (e) {
+      developer.log(e.toString());
       return left(ServerFailure(message: e.toString()));
     }
   }

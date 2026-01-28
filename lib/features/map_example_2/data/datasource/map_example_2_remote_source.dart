@@ -27,25 +27,19 @@ class MapExample2RemoteSourceImpl implements MapExample2RemoteSource {
         '&key=$apikey';
 
     final response = await client.get(url);
-    final data = json.decode(response.body);
-    developer.log(data);
+    //final data = json.decode(response.body);
+    //developer.log(data);
 
-    if (data['status'] == 'OK') {
-      final points = data['routes'][0]['overview_polyline']['points'];
-      developer.log('points: $points');
-      // final decodedPoints = _decodePolyline(points);
-      //_drawPolyline(decodedPoints);
-      /*
-
-final leg = data['routes'][0]['legs'][0];
-final distance = leg['distance']['text'];
-final duration = leg['duration']['text'];
-      */
-
-      return DirectionsResponseModel();
+    if (response['status'] == 'OK') {
+      final points = response['routes'][0]['overview_polyline']['points'];
+      //developer.log('points: $points');
+      return DirectionsResponseModel.fromJson(response);
     } else {
-      print('Directions error: ${data['status']}');
-      return DirectionsResponseModel();
+      print('Directions error: ${response['status']}');
+      return DirectionsResponseModel(
+        status: "${response['status']}",
+        routes: [],
+      );
     }
   }
 }
