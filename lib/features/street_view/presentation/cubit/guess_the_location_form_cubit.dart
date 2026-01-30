@@ -104,4 +104,14 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
       ),
     );
   }
+
+  void onChangeMarkerPosition(LatLng position) {
+    emit(
+      state.copyWith(
+        currentLocationmarker: state.currentLocationmarker!.copyWith(
+          positionParam: position,
+        ),
+      ),
+    );
+  }
 }

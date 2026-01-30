@@ -11,7 +11,10 @@ class Maps2FormState extends Equatable {
   final double? lastRotation;
   final FormzSubmissionStatus status;
   final DirectionsResponseEntity? directions;
-  final Polyline? polyline;
+  final List<Polyline>? polylines;
+  final String? routeDuration;
+  final Circle? circle;
+  final List<Marker>? waypoints;
 
   const Maps2FormState({
     this.selectedPosition,
@@ -24,7 +27,10 @@ class Maps2FormState extends Equatable {
     this.lastRotation,
     this.status = FormzSubmissionStatus.initial,
     this.directions,
-    this.polyline,
+    this.polylines,
+    this.routeDuration,
+    this.circle,
+    this.waypoints,
   });
 
   Maps2FormState copyWith({
@@ -38,7 +44,10 @@ class Maps2FormState extends Equatable {
     double? lastRotation,
     FormzSubmissionStatus? status,
     DirectionsResponseEntity? directions,
-    Polyline? polyline,
+    List<Polyline>? polylines,
+    String? routeDuration,
+    Circle? circle,
+    List<Marker>? waypoints,
   }) {
     return Maps2FormState(
       selectedPosition: selectedPosition ?? this.selectedPosition,
@@ -54,7 +63,10 @@ class Maps2FormState extends Equatable {
       lastRotation: lastRotation ?? this.lastRotation,
       status: status ?? this.status,
       directions: directions ?? this.directions,
-      polyline: polyline ?? this.polyline,
+      polylines: polylines ?? this.polylines,
+      routeDuration: routeDuration ?? this.routeDuration,
+      circle: circle ?? this.circle,
+      waypoints: waypoints ?? this.waypoints,
     );
   }
 
@@ -70,7 +82,10 @@ class Maps2FormState extends Equatable {
     lastRotation,
     status,
     directions,
-    polyline,
+    polylines,
+    routeDuration,
+    circle,
+    waypoints,
   ];
 }
 

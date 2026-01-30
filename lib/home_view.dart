@@ -11,13 +11,14 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 
-        title: Text("Google Maps Showcase"),
+        title: const Text("Google Maps Showcase"),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Examples here'),
+            const Text('Ejemplos'),
+            const SizedBox(height: Sizes.kDivisions),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, MapsExampleOnePage.route);

@@ -16,6 +16,7 @@ class DirectionsResponseModel extends DirectionsResponseEntity {
 
 @JsonSerializable()
 class DirectionsRouteModel extends DirectionsRouteEntity {
+  @JsonKey(name: 'overview_polyline')
   final DirectionsPolylineModel? overviewPolyline;
   final List<DirectionsLegModel>? legs;
 
@@ -42,7 +43,9 @@ class DirectionsPolylineModel extends DirectionsPolylineEntity {
 class DirectionsLegModel extends DirectionsLegEntity {
   final DirectionsValueModel? distance;
   final DirectionsValueModel? duration;
+  @JsonKey(name: 'start_address')
   final String? startAddress;
+  @JsonKey(name: 'end_address')
   final String? endAddress;
   final List<DirectionsStepModel>? steps;
 
@@ -78,6 +81,7 @@ class DirectionsValueModel extends DirectionsValueEntity {
 class DirectionsStepModel extends DirectionsStepEntity {
   final DirectionsValueModel? distance;
   final DirectionsValueModel? duration;
+  @JsonKey(name: 'html_instructions')
   final String? htmlInstructions;
   final DirectionsPolylineModel? polyline;
   final String? travelMode;

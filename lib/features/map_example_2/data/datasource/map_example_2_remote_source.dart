@@ -27,8 +27,8 @@ class MapExample2RemoteSourceImpl implements MapExample2RemoteSource {
         '&key=$apikey';
 
     final response = await client.get(url);
-    //final data = json.decode(response.body);
-    //developer.log(data);
+    //final data = json.decode(response);
+    //developer.log(response.toString());
 
     if (response['status'] == 'OK') {
       final points = response['routes'][0]['overview_polyline']['points'];

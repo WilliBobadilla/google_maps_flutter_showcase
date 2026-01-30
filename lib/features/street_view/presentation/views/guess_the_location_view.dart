@@ -27,6 +27,11 @@ class GuessTheLocationView extends StatelessWidget {
                   controller,
                 );
               },
+              onTap: (LatLng position) {
+                context
+                    .read<GuessTheLocationFormCubit>()
+                    .onChangeMarkerPosition(position);
+              },
             ),
             Positioned(
               bottom: 20,

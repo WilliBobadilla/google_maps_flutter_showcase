@@ -22,10 +22,10 @@ Map<String, dynamic> _$DirectionsResponseModelToJson(
 DirectionsRouteModel _$DirectionsRouteModelFromJson(
   Map<String, dynamic> json,
 ) => DirectionsRouteModel(
-  overviewPolyline: json['overviewPolyline'] == null
+  overviewPolyline: json['overview_polyline'] == null
       ? null
       : DirectionsPolylineModel.fromJson(
-          json['overviewPolyline'] as Map<String, dynamic>,
+          json['overview_polyline'] as Map<String, dynamic>,
         ),
   legs: (json['legs'] as List<dynamic>?)
       ?.map((e) => DirectionsLegModel.fromJson(e as Map<String, dynamic>))
@@ -35,7 +35,7 @@ DirectionsRouteModel _$DirectionsRouteModelFromJson(
 Map<String, dynamic> _$DirectionsRouteModelToJson(
   DirectionsRouteModel instance,
 ) => <String, dynamic>{
-  'overviewPolyline': instance.overviewPolyline,
+  'overview_polyline': instance.overviewPolyline,
   'legs': instance.legs,
 };
 
@@ -56,8 +56,8 @@ DirectionsLegModel _$DirectionsLegModelFromJson(
   duration: json['duration'] == null
       ? null
       : DirectionsValueModel.fromJson(json['duration'] as Map<String, dynamic>),
-  startAddress: json['startAddress'] as String?,
-  endAddress: json['endAddress'] as String?,
+  startAddress: json['start_address'] as String?,
+  endAddress: json['end_address'] as String?,
   steps: (json['steps'] as List<dynamic>?)
       ?.map((e) => DirectionsStepModel.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -67,8 +67,8 @@ Map<String, dynamic> _$DirectionsLegModelToJson(DirectionsLegModel instance) =>
     <String, dynamic>{
       'distance': instance.distance,
       'duration': instance.duration,
-      'startAddress': instance.startAddress,
-      'endAddress': instance.endAddress,
+      'start_address': instance.startAddress,
+      'end_address': instance.endAddress,
       'steps': instance.steps,
     };
 
@@ -92,7 +92,7 @@ DirectionsStepModel _$DirectionsStepModelFromJson(
   duration: json['duration'] == null
       ? null
       : DirectionsValueModel.fromJson(json['duration'] as Map<String, dynamic>),
-  htmlInstructions: json['htmlInstructions'] as String?,
+  htmlInstructions: json['html_instructions'] as String?,
   polyline: json['polyline'] == null
       ? null
       : DirectionsPolylineModel.fromJson(
@@ -106,7 +106,7 @@ Map<String, dynamic> _$DirectionsStepModelToJson(
 ) => <String, dynamic>{
   'distance': instance.distance,
   'duration': instance.duration,
-  'htmlInstructions': instance.htmlInstructions,
+  'html_instructions': instance.htmlInstructions,
   'polyline': instance.polyline,
   'travelMode': instance.travelMode,
 };

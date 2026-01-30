@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_showcase/core/constants_values/assets.dart';
 
-class MapMarkerDashWidget extends StatelessWidget {
-  const MapMarkerDashWidget({super.key, required this.text});
-  final String text;
+class MapMarkerWidget extends StatelessWidget {
+  final String? iconDataPath;
+  //maybe pass here the size, etc etc
+  const MapMarkerWidget({super.key, this.iconDataPath});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
-        const Image(
-          image: AssetImage("assets/icons/dash_icon.png"),
+        Image(
+          image: AssetImage(iconDataPath ?? CustomAssets.dashIcon),
           height: 150,
           width: 150,
         ),
-        Text(text, style: const TextStyle(color: Colors.black, fontSize: 20)),
       ],
     );
   }

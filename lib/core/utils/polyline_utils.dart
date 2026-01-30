@@ -13,6 +13,7 @@ class PolylineUtils {
       points: points,
       width: 6,
       color: Colors.blue,
+      patterns: [PatternItem.dash(50), PatternItem.gap(20)],
       geodesic: true,
     );
   }

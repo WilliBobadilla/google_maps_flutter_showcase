@@ -23,9 +23,7 @@ class StreetViewView extends StatelessWidget {
                   final data = jsonDecode(message.message);
                   final lat = data['lat'];
                   final lng = data['lng'];
-                  //context.read<StreetViewFormCubit>().onLocationChanged(
-                  //  LatLng(lat, lng),
-                  //);
+
                   print('Street View Position changed: Lat: $lat, Lng: $lng');
                 },
               )
@@ -38,8 +36,8 @@ class StreetViewView extends StatelessWidget {
             bottom: 20,
             left: 10,
             child: TextButton(
-              child: Text(
-                'Guess the Location',
+              child: const Text(
+                'Adivinar',
                 style: TextStyle(color: Colors.blue),
               ),
               onPressed: () {
@@ -62,36 +60,6 @@ class StreetViewView extends StatelessWidget {
               },
             ),
           ),
-          /* FlutterGoogleStreetView(
-            /**
-                 * It not necessary but you can set init position
-                 * choice one of initPos or initPanoId
-                 * do not feed param to both of them, or you should get assert error
-                 */
-            //initPos: SAN_FRAN,
-            initPos: const LatLng(25.0780892, 121.5753234),
-            //initPanoId: SANTORINI,
-
-            /**
-                 *  It is worked while you set initPos or initPanoId.
-                 *  initSource is a filter setting to filter panorama
-                 */
-            initSource: StreetViewSource.outdoor,
-
-            /**
-                 *  It is worked while you set initPos or initPanoId.
-                 *  initBearing can set default bearing of camera.
-                 */
-            initBearing: 30,
-
-            zoomGesturesEnabled: false,
-            onStreetViewCreated: (StreetViewController controller) async {
-              /*controller.animateTo(
-                      duration: 750,
-                      camera: StreetViewPanoramaCamera(
-                          bearing: 90, tilt: 30, zoom: 3));*/
-            },
-          ),*/
         ],
       ),
     );
