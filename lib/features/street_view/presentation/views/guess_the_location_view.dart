@@ -41,7 +41,7 @@ class GuessTheLocationView extends StatelessWidget {
                       .read<GuessTheLocationFormCubit>()
                       .onCheckGuessedPosition();
                 },
-                child: const Text('Check Location'),
+                child: const Text('Verificar'),
               ),
             ),
           ],

@@ -17,16 +17,17 @@ class MapsExample2View extends StatelessWidget {
             children: [
               GoogleMap(
                 mapToolbarEnabled: true,
+                myLocationButtonEnabled: true,
+                myLocationEnabled: true,
+                trafficEnabled: true,
+                zoomControlsEnabled: true,
                 initialCameraPosition:
                     state.initialCameraPosition ?? kGooglePlex,
-                //fortyFiveDegreeImageryEnabled: true,
                 mapType: MapType.normal,
                 polylines: state.polylines != null
                     ? Set<Polyline>.from(state.polylines!)
                     : {},
-                circles: state.circle != null
-                    ? Set<Circle>.from([state.circle!])
-                    : {},
+                circles: state.circle != null ? <Circle>{state.circle!} : {},
                 markers: state.currentLocationmarker != null
                     ? {
                         state.currentLocationmarker!,

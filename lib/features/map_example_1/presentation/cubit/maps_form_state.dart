@@ -7,6 +7,9 @@ class MapsFormState extends Equatable {
   final GoogleMapController? controller;
   final CameraPosition? initialCameraPosition;
   final double? lastRotation;
+  final MapType? mapType;
+  final int mapTypeIndex;
+  final double cameraTilt;
 
   const MapsFormState({
     this.selectedPosition,
@@ -15,6 +18,9 @@ class MapsFormState extends Equatable {
     this.controller,
     this.initialCameraPosition,
     this.lastRotation,
+    this.mapType = MapType.normal,
+    this.mapTypeIndex = 1,
+    this.cameraTilt = 0,
   });
 
   MapsFormState copyWith({
@@ -24,6 +30,9 @@ class MapsFormState extends Equatable {
     GoogleMapController? controller,
     CameraPosition? initialCameraPosition,
     double? lastRotation,
+    MapType? mapType,
+    int? mapTypeIndex,
+    double? cameraTilt,
   }) {
     return MapsFormState(
       selectedPosition: selectedPosition ?? this.selectedPosition,
@@ -33,17 +42,23 @@ class MapsFormState extends Equatable {
       initialCameraPosition:
           initialCameraPosition ?? this.initialCameraPosition,
       lastRotation: lastRotation ?? this.lastRotation,
+      mapType: mapType ?? this.mapType,
+      mapTypeIndex: mapTypeIndex ?? this.mapTypeIndex,
+      cameraTilt: cameraTilt ?? this.cameraTilt,
     );
   }
 
   @override
-  List<Object> get props => [
-    selectedPosition!,
-    errorMessage!,
-    marker!,
-    controller!,
-    initialCameraPosition!,
-    lastRotation!,
+  List<Object?> get props => [
+    selectedPosition,
+    errorMessage,
+    marker,
+    controller,
+    initialCameraPosition,
+    lastRotation,
+    mapType,
+    mapTypeIndex,
+    cameraTilt,
   ];
 }
 

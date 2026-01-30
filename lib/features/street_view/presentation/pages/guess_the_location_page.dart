@@ -37,8 +37,8 @@ class GuessTheLocationPage extends StatelessWidget {
               if (state.isCorrect == GuessLocationStatusEnum.correct) {
                 showSuccessPopup(
                   context,
-                  '¡Correcto!',
-                  'Estuviste a ${state.distanceInMeters!.toStringAsFixed(0)} metros de distancia.',
+                  'FELICIDADESSS!',
+                  'Estuviste a ${state.distanceInMeters!.toStringAsFixed(0)} metros de distancia. Sos un crack!',
                   onAccept: () {
                     context.read<GuessTheLocationFormCubit>().onClearAll();
                     Navigator.pop(context);
@@ -49,7 +49,7 @@ class GuessTheLocationPage extends StatelessWidget {
                 showSuccessPopup(
                   context,
                   'Intentelo de nuevo!',
-                  'Estuviste a ${state.distanceInMeters!.toStringAsFixed(0)} metros de distancia.',
+                  'Estuviste a ${state.distanceInMeters!.toStringAsFixed(0)} metros de distancia. Aplazado en geografía!',
                   onAccept: () {
                     context.read<GuessTheLocationFormCubit>().onClearAll();
                     Navigator.pop(context);

@@ -67,10 +67,6 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
           markerId: const MarkerId('destination_location'),
           draggable: true,
           zIndexInt: state.zindexDestinationMarker ?? 0,
-          //onDragStart: (value) {
-          //  developer.log("dragging the destination marker");
-          //  emit(state.copyWith(zindexDestinationMarker: 2));
-          //},
           onDragEnd: (value) {
             developer.log("dragging the destination marker, finished");
             emit(

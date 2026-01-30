@@ -10,18 +10,25 @@ class MapsExampleOneView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Maps Example One')),
-      body: Column(
+      body: const MapsFormWidget(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MapsFormWidget(),
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  context.read<MapsFormCubit>().onReCenterPosition();
-                },
-                child: Text("Re Center"),
-              ),
-            ],
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            child: const Icon(Icons.change_circle),
+            onPressed: () {
+              context.read<MapsFormCubit>().onMapTypeChanged();
+            },
+          ),
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            child: const Icon(Icons.center_focus_strong),
+            onPressed: () {
+              // context.read<MapsFormCubit>().onCenterView();
+              context.read<MapsFormCubit>().onReCenterPosition();
+            },
           ),
         ],
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/constants_values/constants.dart';
-import 'package:google_maps_showcase/core/constants_values/sizes.dart';
 import 'package:google_maps_showcase/features/map_example_1/presentation/cubit/maps_form_cubit.dart';
 
 //example to use google maps with markers
@@ -25,18 +24,18 @@ class MapsFormWidgetState extends State<MapsFormWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<MapsFormCubit, MapsFormState>(
       builder: (context, state) {
-        return Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(Sizes.DEFAULT_RADIUS),
-          ),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: GoogleMap(
+        return Stack(
+          children: [
+            GoogleMap(
               mapToolbarEnabled: true,
+              myLocationButtonEnabled: true,
+              myLocationEnabled: true,
+              trafficEnabled: true,
+              zoomControlsEnabled: true,
+              compassEnabled: true,
+              buildingsEnabled: true,
               initialCameraPosition: state.initialCameraPosition ?? kGooglePlex,
-              //fortyFiveDegreeImageryEnabled: true,
-              mapType: MapType.normal,
+              mapType: state.mapType ?? MapType.normal,
               markers: state.marker != null ? {state.marker!} : {},
               onMapCreated: (GoogleMapController controller) {
                 context.read<MapsFormCubit>().onMapCreated(controller);
@@ -45,7 +44,22 @@ class MapsFormWidgetState extends State<MapsFormWidget> {
                 context.read<MapsFormCubit>().onSelectPosition(position);
               },
             ),
-          ),
+            Positioned(
+              bottom: 20,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 3,
+                height: 50,
+                child: Slider(
+                  min: 0,
+                  max: 90,
+                  value: state.cameraTilt,
+                  onChanged: (value) {
+                    context.read<MapsFormCubit>().onCameratiltleChanged(value);
+                  },
+                ),
+              ),
+            ),
+          ],
         );
       },
     );

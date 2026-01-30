@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_showcase/core/injection_container/injection_container.dart';
@@ -21,6 +23,7 @@ class MapsExampleOnePage extends StatelessWidget {
         listeners: [
           BlocListener<MapsFormCubit, MapsFormState>(
             listener: (context, state) {
+              developer.log("state is: $state");
               if (state.errorMessage != null) {
                 ScaffoldMessenger.of(
                   context,

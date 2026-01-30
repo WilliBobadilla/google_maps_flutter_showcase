@@ -23,7 +23,7 @@ class StreetViewRepositoryImpl implements StreetViewRepository {
       const tryCount = 3;
       final random = Random();
       for (int attempt = 0; attempt < tryCount; attempt++) {
-        final city = cityBoxes[random.nextInt(cityBoxes.length)];
+        final city = kCityBoxes[random.nextInt(kCityBoxes.length)];
         final randomLocation = RandomLocationGenerator.randomPointInCity(city);
         final result = await remoteSource.getStreetViewRandomPlace(
           randomLocation: randomLocation,

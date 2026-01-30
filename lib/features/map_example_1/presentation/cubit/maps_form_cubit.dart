@@ -26,7 +26,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
     );
     if (initialPosition != null) {
       controller.animateCamera(
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         CameraUpdate.newCameraPosition(
           CameraPosition(target: initialPosition, zoom: 15),
         ),
@@ -43,7 +43,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
           marker: Marker(
             markerId: const MarkerId('current_location'),
             position: LatLng(position.latitude, position.longitude),
-            infoWindow: InfoWindow(title: 'Current location'),
+            infoWindow: const InfoWindow(title: 'Current location'),
             onTap: () {
               print(
                 "Marker tapped at ${position.latitude}, ${position.longitude}",
@@ -51,6 +51,24 @@ class MapsFormCubit extends Cubit<MapsFormState> {
             },
           ),
         ),
+      ),
+    );
+  }
+
+  void onMapTypeChanged() {
+    developer.log("map type index: ${state.mapTypeIndex}");
+
+    // Skip MapType.none (index 0), cycle through 1-4
+    int nextIndex = state.mapTypeIndex + 1;
+    if (nextIndex >= MapType.values.length) {
+      nextIndex = 1; // Reset to MapType.normal
+    }
+
+    developer.log("map type index changing to: $nextIndex");
+    emit(
+      state.copyWith(
+        mapType: MapType.values[nextIndex],
+        mapTypeIndex: nextIndex,
       ),
     );
   }
@@ -84,5 +102,19 @@ class MapsFormCubit extends Cubit<MapsFormState> {
       ),
     );
     emit(state.copyWith(lastRotation: currentRotation)); // TODO: check this
+  }
+
+  void onCameratiltleChanged(double tilt) {
+    state.controller!.animateCamera(
+      duration: const Duration(seconds: 2),
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: state.selectedPosition ?? LatLng(0, 0),
+          zoom: 15,
+          tilt: tilt,
+        ),
+      ),
+    );
+    emit(state.copyWith(cameraTilt: tilt));
   }
 }

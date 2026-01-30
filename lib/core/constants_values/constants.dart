@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/features/street_view/domain/entities/city_box_entity.dart';
 
@@ -9,7 +10,11 @@ final CameraPosition kGooglePlex = CameraPosition(
 );
 
 const kStreetViewInitialPosition = LatLng(-25.3273547, -57.5470296);
-String streetViewHtml = """
+
+final apikey = dotenv.env['GOOGLE_API_REST_KEY'] ?? '';
+
+String streetViewHtml =
+    """
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +27,7 @@ String streetViewHtml = """
     }
   </style>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe33cLMFdyn_5EgddBCRQIPYci_4SI0b4"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=$apikey"></script>
 
   <script>
     let panorama;
@@ -65,8 +70,8 @@ String streetViewHtml = """
 
 """;
 
-const List<CityBoxEntity> cityBoxes = [
-  CityBoxEntity(
+const List<CityBoxEntity> kCityBoxes = [
+  /* CityBoxEntity(
     name: 'New York',
     minLat: 40.49,
     minLng: -74.26,
@@ -86,9 +91,7 @@ const List<CityBoxEntity> cityBoxes = [
     minLng: 139.60,
     maxLat: 35.75,
     maxLng: 139.80,
-  ),
-
-  // Asunción, Paraguay
+  ),*/
   CityBoxEntity(
     name: 'Asunción',
     minLat: -25.36,
