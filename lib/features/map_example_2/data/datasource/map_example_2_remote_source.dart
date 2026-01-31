@@ -19,13 +19,16 @@ class MapExample2RemoteSourceImpl implements MapExample2RemoteSource {
     DirectionsRequestModel request,
   ) async {
     final apikey = dotenv.env['GOOGLE_API_REST_KEY'] ?? '';
-    final url =
+    String url =
         '/directions/json'
         '?origin=${request.origin.latitude},${request.origin.longitude}'
         '&destination=${request.destination.latitude},${request.destination.longitude}'
         '&mode=driving'
         '&key=$apikey';
-
+    if (request.waypoints != null) {
+      url +=
+          '&waypoints=${request.waypoints!.map((e) => '${e.latitude},${e.longitude}').join('|')}';
+    }
     final response = await client.get(url);
     //final data = json.decode(response);
     //developer.log(response.toString());

@@ -15,6 +15,7 @@ class Maps2FormState extends Equatable {
   final String? routeDuration;
   final Circle? circle;
   final List<Marker>? waypoints;
+  final bool isTrafficEnabled;
 
   const Maps2FormState({
     this.selectedPosition,
@@ -31,6 +32,7 @@ class Maps2FormState extends Equatable {
     this.routeDuration,
     this.circle,
     this.waypoints,
+    this.isTrafficEnabled = true,
   });
 
   Maps2FormState copyWith({
@@ -48,6 +50,7 @@ class Maps2FormState extends Equatable {
     String? routeDuration,
     Circle? circle,
     List<Marker>? waypoints,
+    bool? isTrafficEnabled,
   }) {
     return Maps2FormState(
       selectedPosition: selectedPosition ?? this.selectedPosition,
@@ -67,6 +70,7 @@ class Maps2FormState extends Equatable {
       routeDuration: routeDuration ?? this.routeDuration,
       circle: circle ?? this.circle,
       waypoints: waypoints ?? this.waypoints,
+      isTrafficEnabled: isTrafficEnabled ?? this.isTrafficEnabled,
     );
   }
 
@@ -86,6 +90,7 @@ class Maps2FormState extends Equatable {
     routeDuration,
     circle,
     waypoints,
+    isTrafficEnabled,
   ];
 }
 

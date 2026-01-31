@@ -4,4 +4,5 @@ class CustomAssets {
 
   static const dashIcon = "assets/icons/dash_icon.png";
   static const beerIcon = "assets/icons/beer_icon.png";
+  static const wIcon = "assets/icons/waldo_icon.png";
 }

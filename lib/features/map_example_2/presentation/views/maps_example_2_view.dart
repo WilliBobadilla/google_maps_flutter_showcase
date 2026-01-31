@@ -19,7 +19,7 @@ class MapsExample2View extends StatelessWidget {
                 mapToolbarEnabled: true,
                 myLocationButtonEnabled: true,
                 myLocationEnabled: true,
-                trafficEnabled: true,
+                trafficEnabled: state.isTrafficEnabled,
                 zoomControlsEnabled: true,
                 initialCameraPosition:
                     state.initialCameraPosition ?? kGooglePlex,
@@ -76,6 +76,13 @@ class MapsExample2View extends StatelessWidget {
             child: const Icon(Icons.center_focus_strong),
             onPressed: () {
               context.read<Maps2FormCubit>().onCenterView();
+            },
+          ),
+          FloatingActionButton(
+            shape: const CircleBorder(),
+            child: const Icon(Icons.traffic),
+            onPressed: () {
+              context.read<Maps2FormCubit>().onTrafficToogle();
             },
           ),
         ],

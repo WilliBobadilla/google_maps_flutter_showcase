@@ -105,6 +105,9 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
       DirectionsRequestEntity(
         origin: state.currentLocationmarker!.position,
         destination: state.destinationLocationmarker!.position,
+        waypoints: state.waypoints != null
+            ? state.waypoints?.map((e) => e.position).toList()
+            : [],
       ),
     );
     result.fold(
@@ -175,5 +178,9 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
         ],
       ),
     );
+  }
+
+  void onTrafficToogle() {
+    emit(state.copyWith(isTrafficEnabled: !state.isTrafficEnabled));
   }
 }
