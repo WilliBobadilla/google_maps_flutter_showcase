@@ -1,10 +1,7 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class FitRouteToCameraUtil {
-  static LatLngBounds fitCameraToPolyline(
-    GoogleMapController controller,
-    List<LatLng> points,
-  ) {
+  static LatLngBounds fitCameraToPolyline(List<LatLng> points) {
     double minLat = points.first.latitude;
     double maxLat = points.first.latitude;
     double minLng = points.first.longitude;

@@ -3,11 +3,11 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
-import 'package:google_maps_showcase/core/constants_values/assets.dart';
 import 'package:widget_to_marker/widget_to_marker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/usecases/usecase.dart';
 import 'package:google_maps_showcase/core/utils/polyline_utils.dart';
+import 'package:google_maps_showcase/core/constants_values/assets.dart';
 import 'package:google_maps_showcase/core/utils/custom_icon_maps_utils.dart';
 import 'package:google_maps_showcase/core/utils/fit_route_to_camera_util.dart';
 import 'package:google_maps_showcase/features/map_example_2/domain/usecase/get_directions_use_case.dart';
@@ -119,7 +119,6 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
         final routeDuration = success.routes!.first.legs!.first.duration!.text;
         if (state.controller != null) {
           final bounds = FitRouteToCameraUtil.fitCameraToPolyline(
-            state.controller!,
             polylinePoints.points,
           );
           state.controller!.animateCamera(
@@ -139,7 +138,7 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
   }
 
   void onCenterView() {
-    final bounds = FitRouteToCameraUtil.fitCameraToPolyline(state.controller!, [
+    final bounds = FitRouteToCameraUtil.fitCameraToPolyline([
       state.currentLocationmarker!.position,
       state.destinationLocationmarker!.position,
     ]);

@@ -48,7 +48,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
               icon: await BitmapDescriptor.asset(
                 ImageConfiguration.empty,
                 CustomAssets.wIcon,
-                width: 40,
+                width: 50,
               ),
               draggable: true,
               markerId: const MarkerId('current_location'),
@@ -75,13 +75,14 @@ class MapsFormCubit extends Cubit<MapsFormState> {
   void onMapTypeChanged() {
     developer.log("map type index: ${state.mapTypeIndex}");
 
-    // Skip MapType.none (index 0), cycle through 1-4
+    // Skip MapType.none
     int nextIndex = state.mapTypeIndex + 1;
     if (nextIndex >= MapType.values.length) {
       nextIndex = 1; // Reset to MapType.normal
     }
 
     developer.log("map type index changing to: $nextIndex");
+    developer.log("map type now is ${MapType.values[nextIndex]}");
     emit(
       state.copyWith(
         mapType: MapType.values[nextIndex],
