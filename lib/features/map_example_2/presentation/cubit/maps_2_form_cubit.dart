@@ -30,7 +30,6 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
        super(Maps2FormInitial());
 
   void onMapCreated(GoogleMapController controller) async {
-    // You can store the controller if needed
     developer.log('Map created, fetching current location...');
 
     final currentLocation = await _getCurrentLocationUseCase.call(NoParams());

@@ -28,7 +28,7 @@ class ExternalClient {
   ]) async {
     String url = Links.kBaseUrl + path;
     Map<String, String> headers = {};
-    //developer.log('URL: $url', name: 'google');
+    developer.log('URL: $url', name: 'google');
     if (additionalHeaders != null) {
       headers.addAll(additionalHeaders);
     }
