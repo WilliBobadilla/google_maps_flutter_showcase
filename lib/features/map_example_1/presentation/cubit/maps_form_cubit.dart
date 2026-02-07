@@ -1,7 +1,7 @@
 import 'dart:developer' as developer;
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_compass_v2/flutter_compass_v2.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_showcase/core/constants_values/assets.dart';
@@ -36,7 +36,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
       );
     }
 
-    print("Current location result: $currentLocation");
+    developer.log("Current location result: $currentLocation");
     currentLocation.fold(
       (failure) => emit(state.copyWith(errorMessage: failure.message)),
       (position) async {
@@ -58,7 +58,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
                 developer.log("Marker drag started at $value");
               },
               onDragEnd: (value) {
-                developer.log("Marker drag started at $value");
+                developer.log("Marker drag finished at $value");
               },
               onTap: () {
                 developer.log(
@@ -75,10 +75,10 @@ class MapsFormCubit extends Cubit<MapsFormState> {
   void onMapTypeChanged() {
     developer.log("map type index: ${state.mapTypeIndex}");
 
-    // Skip MapType.none
+    //  MapType.none = 0
     int nextIndex = state.mapTypeIndex + 1;
     if (nextIndex >= MapType.values.length) {
-      nextIndex = 1; // Reset to MapType.normal
+      nextIndex = 1; // MapType.normal
     }
 
     developer.log("map type index changing to: $nextIndex");
@@ -119,7 +119,7 @@ class MapsFormCubit extends Cubit<MapsFormState> {
         ),
       ),
     );
-    emit(state.copyWith(lastRotation: currentRotation)); // TODO: check this
+    emit(state.copyWith(lastRotation: currentRotation));
   }
 
   void onCameratiltleChanged(double tilt) {
@@ -134,5 +134,11 @@ class MapsFormCubit extends Cubit<MapsFormState> {
       ),
     );
     emit(state.copyWith(cameraTilt: tilt));
+  }
+
+  @override
+  Future<void> close() {
+    state.controller?.dispose();
+    return super.close();
   }
 }

@@ -114,4 +114,10 @@ class GuessTheLocationFormCubit extends Cubit<GuessTheLocationFormState> {
       ),
     );
   }
+
+  @override
+  Future<void> close() {
+    state.controller?.dispose();
+    return super.close();
+  }
 }

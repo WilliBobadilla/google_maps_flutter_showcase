@@ -36,7 +36,6 @@ class HomeView extends StatelessWidget {
                 'Example 2, Custom Markers, Polylines, Circles, etc',
               ),
             ),
-
             const SizedBox(height: Sizes.kDivisions),
             ElevatedButton(
               onPressed: () {

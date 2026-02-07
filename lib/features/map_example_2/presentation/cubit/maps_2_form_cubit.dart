@@ -181,4 +181,10 @@ class Maps2FormCubit extends Cubit<Maps2FormState> {
   void onTrafficToogle() {
     emit(state.copyWith(isTrafficEnabled: !state.isTrafficEnabled));
   }
+
+  @override
+  Future<void> close() {
+    state.controller?.dispose();
+    return super.close();
+  }
 }
