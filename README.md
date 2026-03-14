@@ -10,11 +10,17 @@ Showcasing google maps for flutter. This project was shown in the Flutter Conf P
 
 ## Screenshoots :camera:
 
-![Home Screen](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/home.png?raw=true)
-![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker1.png?raw=true)
-![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker2.png?raw=true)
-![Directions and waypoints](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/directions3.png?raw=true)
-![StreetView](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true)
+<p>
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/home.png?raw=true" width="200" alt="Home Screen">
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker1.png?raw=true" width="200" alt="Marcadores Custom">
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker2.png?raw=true" width="200" alt="Marcadores Custom">
+</p>
+
+<p>
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/directions3.png?raw=true" width="200" alt="Directions and waypoints">
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true" width="200" alt="StreetView">
+</p>
+
 
 
 ## Useful commands :computer:
