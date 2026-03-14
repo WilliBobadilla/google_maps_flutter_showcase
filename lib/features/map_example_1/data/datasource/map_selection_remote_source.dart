@@ -7,8 +7,9 @@ abstract class MapSelectionRemoteSource {
 class MapSelectionRemoteSourceImpl implements MapSelectionRemoteSource {
   @override
   Future<Position> getCurrentLocation() {
+    // should be in a util
     return Geolocator.getCurrentPosition(
-      locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
+      locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
     );
   }
 }

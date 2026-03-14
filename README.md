@@ -1,8 +1,22 @@
-# google_maps_showcase
+# Google Maps Showcase :world_map:
 
-Showcasing google maps for flutter.
+Showcasing google maps for flutter. This project was shown in the Flutter Conf Paraguay 2026. A general demo to showcase some APIs and functionalities with flutter.
+
+## Content :book:
+
+1. GooleMap widget, Controller, Markers.
+2. Custom Markers, Polylines, Circles. 
+3. Street View example.
+
+## Screenshoots :camera:
+
+![Home Screen](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/home.png?raw=true)
+![Marcadores 1](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/marker1.jpg?raw=true)
 
 
+
+
+## Useful commands :computer:
 ### Create new features with mason 
 
 1. Activate mason cli 
@@ -29,3 +43,7 @@ mason get
 ```
 mason make clean_architecture_feature2
 ```
+
+
+## Author :man:
+Williams Bobadilla

@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
                 Navigator.pushNamed(context, MapsExampleOnePage.route);
               },
               child: const Text(
-                'Example 1, Current Position, Camera control, Marker, etc',
+                'Ejemplo 1, Current Position, Camera control, Markers, etc',
               ),
             ),
             const SizedBox(height: Sizes.kDivisions),
@@ -33,7 +33,7 @@ class HomeView extends StatelessWidget {
                 Navigator.pushNamed(context, MapsExample2Page.route);
               },
               child: const Text(
-                'Example 2, Custom Markers, Polylines, Circles, etc',
+                'Ejemplo 2, Custom Markers, Polylines, Circles, etc',
               ),
             ),
             const SizedBox(height: Sizes.kDivisions),
@@ -41,7 +41,7 @@ class HomeView extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, StreetViewPage.route);
               },
-              child: const Text('Example 3, Street View'),
+              child: const Text('Ejemplo 3, Sorpresa(?'),
             ),
           ],
         ),
