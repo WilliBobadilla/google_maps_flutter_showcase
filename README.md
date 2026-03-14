@@ -18,7 +18,8 @@ Showcasing google maps for flutter. This project was shown in the Flutter Conf P
 
 <p>
   <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/directions3.png?raw=true" width="200" alt="Directions and waypoints">
-  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true" width="200" alt="StreetView">
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/streetview2.mp4?raw=true" width="200" alt="StreetView">
+  <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/streetviewresult.png?raw=true" width="200" alt="StreetView">
 </p>
 
 
