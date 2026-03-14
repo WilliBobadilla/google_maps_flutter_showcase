@@ -10,11 +10,11 @@ Showcasing google maps for flutter. This project was shown in the Flutter Conf P
 
 ## Screenshoots :camera:
 
-![Home Screen](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/home.png?raw=true)
-![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/marker1.png?raw=true)
-![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/marker2.png?raw=true)
-![Directions and waypoints](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/directions3.png?raw=true)
-![StreetView](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/master/screenshoots/google_street_view.mp4?raw=true)
+![Home Screen](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/home.png?raw=true)
+![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker1.png?raw=true)
+![Marcadores Custom](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/marker2.png?raw=true)
+![Directions and waypoints](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/directions3.png?raw=true)
+![StreetView](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true)
 
 
 ## Useful commands :computer:
