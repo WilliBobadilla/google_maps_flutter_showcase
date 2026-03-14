@@ -22,11 +22,9 @@ Showcasing google maps for flutter. This project was shown in the Flutter Conf P
   <img src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/streetviewresult.png?raw=true" width="200" alt="StreetView">
 </p>
 Download a mini demo of street view
-<p>
-  <link src="https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true" width="200" alt="StreetView">
-  DEMO
-  </link>
-</p>
+
+[Download the MP4 video file](https://github.com/WilliBobadilla/google_maps_flutter_showcase/blob/main/screenshoots/google_street_view.mp4?raw=true)
+
 
 
 ## Useful commands :computer:
