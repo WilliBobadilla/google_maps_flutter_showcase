@@ -6,7 +6,7 @@ Showcasing google maps for flutter. This project was shown in the Flutter Conf P
 
 1. GooleMap widget, Controller, Markers.
 2. Custom Markers, Polylines, Circles. 
-3. Street View example.
+3. Street View example, a GeoGuessr simplified replica.
 
 ## Screenshoots :camera:
 
